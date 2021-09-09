@@ -65,6 +65,41 @@
 		margin-top: -0.906em;
 		margin-right: -0.906em;
 	}
+	.collapsible {
+	  background-color: #ffbb00;
+	  color: white;
+	  cursor: pointer;
+	  padding: 18px;
+	  width: 100%;
+	  border: none;
+	  text-align: left;
+	  outline: none;
+	  font-size: 15px;
+	}
+
+	.active, .collapsible:hover {
+	  background-color: #ffd35c;
+	}
+
+	.collapsible:after {
+	  content: '\002B';
+	  color: black;
+	  font-weight: bold;
+	  float: right;
+	  margin-left: 5px;
+	}
+
+	.active:after {
+	  content: "\2212";
+	}
+
+	.content {
+	  padding: 0 20px;
+	  max-height: 0;
+	  overflow: hidden;
+	  transition: max-height 0.2s ease-out;
+	  background-color: #64b7d9;
+	}
 	</style>
 	<title>Skydiving Expo</title>
 	<center>
@@ -78,6 +113,12 @@
 		In de lucht is het bijvoorbeeld heel onhandig om een lange keten mensen te zijn omdat je de controle verliest. En wat nou als je in de bus niet naast elkaar kan zitten? Dit alles zorgt ervoor dat de speler een goede balans moet vinden tussen geruststellen en order. 
 		Ik heb dit gekozen omdat ik hoop dat het de emotionele achtbaan van de ervaring overbrengt aan de speler.
 		</p>
+		<button class="collapsible">Zie afbeelding met uitleg [klik hier]</button>
+		<div class="content">
+			<br/>
+			<img src="https://media.discordapp.net/attachments/670972149426814998/885522596249083904/20210909_155027.jpg?width=2382&height=1340" width=100%/>
+			<br/>
+		</div>
 		<image style="float: left;" src="https://www.cloud-awards.com/wp-content/uploads/2016/02/main-center-med-1.png" width="400" height="400"/>
 		<div style="float: right;">
 			<h2 id="voorbeeldvid">Videostudie</h2>
@@ -129,4 +170,20 @@
 		</p>
 	</div>
 	<marquee><image style="float: left;" src="https://www.cloud-awards.com/wp-content/uploads/2016/02/main-center-med-1.png" width="200" height="200"/></marquee>
+	<script>
+		var coll = document.getElementsByClassName("collapsible");
+		var i;
+
+		for (i = 0; i < coll.length; i++) {
+		  coll[i].addEventListener("click", function() {
+			this.classList.toggle("active");
+			var content = this.nextElementSibling;
+			if (content.style.maxHeight){
+			  content.style.maxHeight = null;
+			} else {
+			  content.style.maxHeight = content.scrollHeight + "px";
+			} 
+		  });
+		}
+	</script>
 </html>
